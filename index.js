@@ -2,7 +2,7 @@ async function fetchUserData(){
     try{
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
     const userData = await response.json();
-    const res =userData.map((user, index) => {
+    const modifiedUsers =userData.map((user, index) => {
         return Object.assign({},user,{
             name: user.name+ " " + index,
             username: user.username+ " " +index,
@@ -18,19 +18,11 @@ async function fetchUserData(){
             },
             website: user.website+ " "+index,
         }, )
-    //    const keys =Object.keys(user);
-    //    for(const key in user){
-    //     if(typeof user[key] === 'object'){
-    //         user[key][0]+=" "+index;
-    //     }
-    //     user[key] += " " + index;
-    //    }
-
     });
-    console.log(res);
+    console.log(modifiedUsers);
 
     const fileterd= userData.filter((user) => user.email.endsWith('.biz'));
-    //console.log(fileterd)
+    console.log(mres)
         userData.sort()
     const sortedUsers=userData.sort((a, b) => {
         let nameOfA = a.name.toLowerCase(),
